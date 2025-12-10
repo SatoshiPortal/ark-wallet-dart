@@ -7,7 +7,7 @@ edition = "2021"
 crate-type = ["cdylib", "staticlib"]
 
 [dependencies]
-flutter_rust_bridge = { version = "=2.9.0", features = ["anyhow"] }
+flutter_rust_bridge = { version = "=2.11.1", features = ["anyhow"] }
 anyhow = "1"
 ark-bdk-wallet = { git = "https://github.com/ArkLabsHQ/ark-rs.git", rev = "f64b45" }
 ark-core = { git = "https://github.com/ArkLabsHQ/ark-rs.git", rev = "f64b45" }
