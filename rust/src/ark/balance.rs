@@ -3,23 +3,23 @@ use anyhow::{anyhow, Result};
 
 pub use ark_client::OffChainBalance;
 
-pub struct Boarding {
+pub struct ArkBoarding {
     pub unconfirmed: i64,
     pub confirmed: i64,
     pub total: i64,
 }
 
-pub struct Balance {
+pub struct ArkBalance {
     pub preconfirmed: i64,
     pub settled: i64,
     pub available: i64,
     pub recoverable: i64,
     pub total: i64,
-    pub boarding: Boarding,
+    pub boarding: ArkBoarding,
 }
 
 impl ArkWallet {
-    pub async fn balance(&self) -> Result<Balance> {
+    pub async fn balance(&self) -> Result<ArkBalance> {
         let offchain_balance = self
             .inner
             .offchain_balance()
@@ -34,7 +34,7 @@ impl ArkWallet {
 
         let boarding_balance = self.calculate_boarding_balance().await?;
 
-        Ok(Balance {
+        Ok(ArkBalance {
             preconfirmed,
             settled,
             available,
@@ -44,7 +44,7 @@ impl ArkWallet {
         })
     }
 
-    async fn calculate_boarding_balance(&self) -> Result<Boarding> {
+    async fn calculate_boarding_balance(&self) -> Result<ArkBoarding> {
         let txs = self
             .inner
             .transaction_history()
@@ -70,7 +70,7 @@ impl ArkWallet {
             }
         }
 
-        Ok(Boarding {
+        Ok(ArkBoarding {
             unconfirmed,
             confirmed,
             total: unconfirmed + confirmed,

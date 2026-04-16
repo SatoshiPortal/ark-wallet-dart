@@ -4,7 +4,6 @@
 // ignore_for_file: invalid_use_of_internal_member, unused_import, unnecessary_import
 
 import '../frb_generated.dart';
-import '../lib.dart';
 import 'balance.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'server_info.dart';
@@ -15,11 +14,7 @@ import 'transactions.dart';
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ArkWallet>>
 abstract class ArkWallet implements RustOpaqueInterface {
-  ArcClientEsploraClientWalletInMemoryDbInMemorySwapStorage get inner;
-
-  set inner(ArcClientEsploraClientWalletInMemoryDbInMemorySwapStorage inner);
-
-  Future<Balance> balance();
+  Future<ArkBalance> balance();
 
   String boardingAddress();
 
@@ -69,5 +64,5 @@ abstract class ArkWallet implements RustOpaqueInterface {
     required bool selectRecoverableVtxos,
   });
 
-  Future<List<Transaction>> transactionHistory();
+  Future<List<ArkTransaction>> transactionHistory();
 }

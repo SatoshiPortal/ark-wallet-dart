@@ -15,7 +15,6 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:ffi' as ffi;
 import 'frb_generated.dart';
-import 'lib.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_io.dart';
 
 abstract class LibArkApiImplPlatform extends BaseApiImpl<LibArkWire> {
@@ -25,10 +24,6 @@ abstract class LibArkApiImplPlatform extends BaseApiImpl<LibArkWire> {
     required super.generalizedFrbRustBinding,
     required super.portManager,
   });
-
-  CrossPlatformFinalizerArg
-  get rust_arc_decrement_strong_count_ArcClientEsploraClientWalletInMemoryDbInMemorySwapStoragePtr =>
-      wire._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcClientEsploraClientWalletInMemoryDbInMemorySwapStoragePtr;
 
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_ArkWalletPtr =>
       wire._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArkWalletPtr;
@@ -42,12 +37,6 @@ abstract class LibArkApiImplPlatform extends BaseApiImpl<LibArkWire> {
 
   @protected
   AnyhowException dco_decode_AnyhowException(dynamic raw);
-
-  @protected
-  ArcClientEsploraClientWalletInMemoryDbInMemorySwapStorage
-  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcClientEsploraClientWalletInMemoryDbInMemorySwapStorage(
-    dynamic raw,
-  );
 
   @protected
   ArkWallet
@@ -69,12 +58,6 @@ abstract class LibArkApiImplPlatform extends BaseApiImpl<LibArkWire> {
 
   @protected
   ArkWallet
-  dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArkWallet(
-    dynamic raw,
-  );
-
-  @protected
-  ArkWallet
   dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArkWallet(
     dynamic raw,
   );
@@ -82,12 +65,6 @@ abstract class LibArkApiImplPlatform extends BaseApiImpl<LibArkWire> {
   @protected
   EsploraClient
   dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEsploraClient(
-    dynamic raw,
-  );
-
-  @protected
-  ArcClientEsploraClientWalletInMemoryDbInMemorySwapStorage
-  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcClientEsploraClientWalletInMemoryDbInMemorySwapStorage(
     dynamic raw,
   );
 
@@ -113,10 +90,13 @@ abstract class LibArkApiImplPlatform extends BaseApiImpl<LibArkWire> {
   String dco_decode_String(dynamic raw);
 
   @protected
-  Balance dco_decode_balance(dynamic raw);
+  ArkBalance dco_decode_ark_balance(dynamic raw);
 
   @protected
-  Boarding dco_decode_boarding(dynamic raw);
+  ArkBoarding dco_decode_ark_boarding(dynamic raw);
+
+  @protected
+  ArkTransaction dco_decode_ark_transaction(dynamic raw);
 
   @protected
   BoardingSettlement dco_decode_boarding_settlement(dynamic raw);
@@ -134,22 +114,19 @@ abstract class LibArkApiImplPlatform extends BaseApiImpl<LibArkWire> {
   PlatformInt64 dco_decode_i_64(dynamic raw);
 
   @protected
+  List<ArkTransaction> dco_decode_list_ark_transaction(dynamic raw);
+
+  @protected
   List<int> dco_decode_list_prim_u_8_loose(dynamic raw);
 
   @protected
   Uint8List dco_decode_list_prim_u_8_strict(dynamic raw);
 
   @protected
-  List<Transaction> dco_decode_list_transaction(dynamic raw);
-
-  @protected
   PlatformInt64? dco_decode_opt_box_autoadd_i_64(dynamic raw);
 
   @protected
   ServerInfo dco_decode_server_info(dynamic raw);
-
-  @protected
-  Transaction dco_decode_transaction(dynamic raw);
 
   @protected
   int dco_decode_u_32(dynamic raw);
@@ -168,12 +145,6 @@ abstract class LibArkApiImplPlatform extends BaseApiImpl<LibArkWire> {
 
   @protected
   AnyhowException sse_decode_AnyhowException(SseDeserializer deserializer);
-
-  @protected
-  ArcClientEsploraClientWalletInMemoryDbInMemorySwapStorage
-  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcClientEsploraClientWalletInMemoryDbInMemorySwapStorage(
-    SseDeserializer deserializer,
-  );
 
   @protected
   ArkWallet
@@ -195,12 +166,6 @@ abstract class LibArkApiImplPlatform extends BaseApiImpl<LibArkWire> {
 
   @protected
   ArkWallet
-  sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArkWallet(
-    SseDeserializer deserializer,
-  );
-
-  @protected
-  ArkWallet
   sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArkWallet(
     SseDeserializer deserializer,
   );
@@ -208,12 +173,6 @@ abstract class LibArkApiImplPlatform extends BaseApiImpl<LibArkWire> {
   @protected
   EsploraClient
   sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEsploraClient(
-    SseDeserializer deserializer,
-  );
-
-  @protected
-  ArcClientEsploraClientWalletInMemoryDbInMemorySwapStorage
-  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcClientEsploraClientWalletInMemoryDbInMemorySwapStorage(
     SseDeserializer deserializer,
   );
 
@@ -239,10 +198,13 @@ abstract class LibArkApiImplPlatform extends BaseApiImpl<LibArkWire> {
   String sse_decode_String(SseDeserializer deserializer);
 
   @protected
-  Balance sse_decode_balance(SseDeserializer deserializer);
+  ArkBalance sse_decode_ark_balance(SseDeserializer deserializer);
 
   @protected
-  Boarding sse_decode_boarding(SseDeserializer deserializer);
+  ArkBoarding sse_decode_ark_boarding(SseDeserializer deserializer);
+
+  @protected
+  ArkTransaction sse_decode_ark_transaction(SseDeserializer deserializer);
 
   @protected
   BoardingSettlement sse_decode_boarding_settlement(
@@ -262,22 +224,21 @@ abstract class LibArkApiImplPlatform extends BaseApiImpl<LibArkWire> {
   PlatformInt64 sse_decode_i_64(SseDeserializer deserializer);
 
   @protected
+  List<ArkTransaction> sse_decode_list_ark_transaction(
+    SseDeserializer deserializer,
+  );
+
+  @protected
   List<int> sse_decode_list_prim_u_8_loose(SseDeserializer deserializer);
 
   @protected
   Uint8List sse_decode_list_prim_u_8_strict(SseDeserializer deserializer);
 
   @protected
-  List<Transaction> sse_decode_list_transaction(SseDeserializer deserializer);
-
-  @protected
   PlatformInt64? sse_decode_opt_box_autoadd_i_64(SseDeserializer deserializer);
 
   @protected
   ServerInfo sse_decode_server_info(SseDeserializer deserializer);
-
-  @protected
-  Transaction sse_decode_transaction(SseDeserializer deserializer);
 
   @protected
   int sse_decode_u_32(SseDeserializer deserializer);
@@ -297,13 +258,6 @@ abstract class LibArkApiImplPlatform extends BaseApiImpl<LibArkWire> {
   @protected
   void sse_encode_AnyhowException(
     AnyhowException self,
-    SseSerializer serializer,
-  );
-
-  @protected
-  void
-  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcClientEsploraClientWalletInMemoryDbInMemorySwapStorage(
-    ArcClientEsploraClientWalletInMemoryDbInMemorySwapStorage self,
     SseSerializer serializer,
   );
 
@@ -330,13 +284,6 @@ abstract class LibArkApiImplPlatform extends BaseApiImpl<LibArkWire> {
 
   @protected
   void
-  sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArkWallet(
-    ArkWallet self,
-    SseSerializer serializer,
-  );
-
-  @protected
-  void
   sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArkWallet(
     ArkWallet self,
     SseSerializer serializer,
@@ -346,13 +293,6 @@ abstract class LibArkApiImplPlatform extends BaseApiImpl<LibArkWire> {
   void
   sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEsploraClient(
     EsploraClient self,
-    SseSerializer serializer,
-  );
-
-  @protected
-  void
-  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcClientEsploraClientWalletInMemoryDbInMemorySwapStorage(
-    ArcClientEsploraClientWalletInMemoryDbInMemorySwapStorage self,
     SseSerializer serializer,
   );
 
@@ -381,10 +321,16 @@ abstract class LibArkApiImplPlatform extends BaseApiImpl<LibArkWire> {
   void sse_encode_String(String self, SseSerializer serializer);
 
   @protected
-  void sse_encode_balance(Balance self, SseSerializer serializer);
+  void sse_encode_ark_balance(ArkBalance self, SseSerializer serializer);
 
   @protected
-  void sse_encode_boarding(Boarding self, SseSerializer serializer);
+  void sse_encode_ark_boarding(ArkBoarding self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_ark_transaction(
+    ArkTransaction self,
+    SseSerializer serializer,
+  );
 
   @protected
   void sse_encode_boarding_settlement(
@@ -408,17 +354,17 @@ abstract class LibArkApiImplPlatform extends BaseApiImpl<LibArkWire> {
   void sse_encode_i_64(PlatformInt64 self, SseSerializer serializer);
 
   @protected
+  void sse_encode_list_ark_transaction(
+    List<ArkTransaction> self,
+    SseSerializer serializer,
+  );
+
+  @protected
   void sse_encode_list_prim_u_8_loose(List<int> self, SseSerializer serializer);
 
   @protected
   void sse_encode_list_prim_u_8_strict(
     Uint8List self,
-    SseSerializer serializer,
-  );
-
-  @protected
-  void sse_encode_list_transaction(
-    List<Transaction> self,
     SseSerializer serializer,
   );
 
@@ -430,9 +376,6 @@ abstract class LibArkApiImplPlatform extends BaseApiImpl<LibArkWire> {
 
   @protected
   void sse_encode_server_info(ServerInfo self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_transaction(Transaction self, SseSerializer serializer);
 
   @protected
   void sse_encode_u_32(int self, SseSerializer serializer);
@@ -463,40 +406,6 @@ class LibArkWire implements BaseWire {
   /// The symbols are looked up in [dynamicLibrary].
   LibArkWire(ffi.DynamicLibrary dynamicLibrary)
     : _lookup = dynamicLibrary.lookup;
-
-  void
-  rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcClientEsploraClientWalletInMemoryDbInMemorySwapStorage(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcClientEsploraClientWalletInMemoryDbInMemorySwapStorage(
-      ptr,
-    );
-  }
-
-  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcClientEsploraClientWalletInMemoryDbInMemorySwapStoragePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-        'frbgen_ark_wallet_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcClientEsploraClientWalletInMemoryDbInMemorySwapStorage',
-      );
-  late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcClientEsploraClientWalletInMemoryDbInMemorySwapStorage =
-      _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcClientEsploraClientWalletInMemoryDbInMemorySwapStoragePtr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
-
-  void
-  rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcClientEsploraClientWalletInMemoryDbInMemorySwapStorage(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcClientEsploraClientWalletInMemoryDbInMemorySwapStorage(
-      ptr,
-    );
-  }
-
-  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcClientEsploraClientWalletInMemoryDbInMemorySwapStoragePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-        'frbgen_ark_wallet_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcClientEsploraClientWalletInMemoryDbInMemorySwapStorage',
-      );
-  late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcClientEsploraClientWalletInMemoryDbInMemorySwapStorage =
-      _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcClientEsploraClientWalletInMemoryDbInMemorySwapStoragePtr
-          .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   void
   rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArkWallet(

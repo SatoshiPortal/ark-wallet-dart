@@ -9,23 +9,23 @@ import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'transactions.freezed.dart';
 
 @freezed
-sealed class Transaction with _$Transaction {
-  const Transaction._();
+sealed class ArkTransaction with _$ArkTransaction {
+  const ArkTransaction._();
 
-  const factory Transaction.boarding({
+  const factory ArkTransaction.boarding({
     required String txid,
     required PlatformInt64 sats,
     PlatformInt64? confirmedAt,
-  }) = Transaction_Boarding;
-  const factory Transaction.commitment({
+  }) = ArkTransaction_Boarding;
+  const factory ArkTransaction.commitment({
     required String txid,
     required PlatformInt64 sats,
     required PlatformInt64 createdAt,
-  }) = Transaction_Commitment;
-  const factory Transaction.redeem({
+  }) = ArkTransaction_Commitment;
+  const factory ArkTransaction.redeem({
     required String txid,
     required PlatformInt64 sats,
     required bool isSettled,
     required PlatformInt64 createdAt,
-  }) = Transaction_Redeem;
+  }) = ArkTransaction_Redeem;
 }

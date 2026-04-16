@@ -16,7 +16,6 @@ import 'dart:convert';
 import 'frb_generated.dart';
 import 'frb_generated.io.dart'
     if (dart.library.js_interop) 'frb_generated.web.dart';
-import 'lib.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 /// Main entrypoint of the Rust API
@@ -72,7 +71,7 @@ class LibArk extends BaseEntrypoint<LibArkApi, LibArkApiImpl, LibArkWire> {
   String get codegenVersion => '2.11.1';
 
   @override
-  int get rustContentHash => -632863681;
+  int get rustContentHash => 2125433368;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -83,15 +82,7 @@ class LibArk extends BaseEntrypoint<LibArkApi, LibArkApiImpl, LibArkWire> {
 }
 
 abstract class LibArkApi extends BaseApi {
-  ArcClientEsploraClientWalletInMemoryDbInMemorySwapStorage
-  crateArkClientArkWalletAutoAccessorGetInner({required ArkWallet that});
-
-  void crateArkClientArkWalletAutoAccessorSetInner({
-    required ArkWallet that,
-    required ArcClientEsploraClientWalletInMemoryDbInMemorySwapStorage inner,
-  });
-
-  Future<Balance> crateArkClientArkWalletBalance({required ArkWallet that});
+  Future<ArkBalance> crateArkClientArkWalletBalance({required ArkWallet that});
 
   String crateArkClientArkWalletBoardingAddress({required ArkWallet that});
 
@@ -146,7 +137,7 @@ abstract class LibArkApi extends BaseApi {
     required bool selectRecoverableVtxos,
   });
 
-  Future<List<Transaction>> crateArkClientArkWalletTransactionHistory({
+  Future<List<ArkTransaction>> crateArkClientArkWalletTransactionHistory({
     required ArkWallet that,
   });
 
@@ -161,15 +152,6 @@ abstract class LibArkApi extends BaseApi {
   bool crateArkUtilsUtilsIsArk({required String address});
 
   bool crateArkUtilsUtilsIsBtc({required String address});
-
-  RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_ArcClientEsploraClientWalletInMemoryDbInMemorySwapStorage;
-
-  RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_ArcClientEsploraClientWalletInMemoryDbInMemorySwapStorage;
-
-  CrossPlatformFinalizerArg
-  get rust_arc_decrement_strong_count_ArcClientEsploraClientWalletInMemoryDbInMemorySwapStoragePtr;
 
   RustArcIncrementStrongCountFnType
   get rust_arc_increment_strong_count_ArkWallet;
@@ -206,74 +188,7 @@ class LibArkApiImpl extends LibArkApiImplPlatform implements LibArkApi {
   });
 
   @override
-  ArcClientEsploraClientWalletInMemoryDbInMemorySwapStorage
-  crateArkClientArkWalletAutoAccessorGetInner({required ArkWallet that}) {
-    return handler.executeSync(
-      SyncTask(
-        callFfi: () {
-          final serializer = SseSerializer(generalizedFrbRustBinding);
-          sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArkWallet(
-            that,
-            serializer,
-          );
-          return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1)!;
-        },
-        codec: SseCodec(
-          decodeSuccessData:
-              sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcClientEsploraClientWalletInMemoryDbInMemorySwapStorage,
-          decodeErrorData: null,
-        ),
-        constMeta: kCrateArkClientArkWalletAutoAccessorGetInnerConstMeta,
-        argValues: [that],
-        apiImpl: this,
-      ),
-    );
-  }
-
-  TaskConstMeta get kCrateArkClientArkWalletAutoAccessorGetInnerConstMeta =>
-      const TaskConstMeta(
-        debugName: "ArkWallet_auto_accessor_get_inner",
-        argNames: ["that"],
-      );
-
-  @override
-  void crateArkClientArkWalletAutoAccessorSetInner({
-    required ArkWallet that,
-    required ArcClientEsploraClientWalletInMemoryDbInMemorySwapStorage inner,
-  }) {
-    return handler.executeSync(
-      SyncTask(
-        callFfi: () {
-          final serializer = SseSerializer(generalizedFrbRustBinding);
-          sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArkWallet(
-            that,
-            serializer,
-          );
-          sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcClientEsploraClientWalletInMemoryDbInMemorySwapStorage(
-            inner,
-            serializer,
-          );
-          return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 2)!;
-        },
-        codec: SseCodec(
-          decodeSuccessData: sse_decode_unit,
-          decodeErrorData: null,
-        ),
-        constMeta: kCrateArkClientArkWalletAutoAccessorSetInnerConstMeta,
-        argValues: [that, inner],
-        apiImpl: this,
-      ),
-    );
-  }
-
-  TaskConstMeta get kCrateArkClientArkWalletAutoAccessorSetInnerConstMeta =>
-      const TaskConstMeta(
-        debugName: "ArkWallet_auto_accessor_set_inner",
-        argNames: ["that", "inner"],
-      );
-
-  @override
-  Future<Balance> crateArkClientArkWalletBalance({required ArkWallet that}) {
+  Future<ArkBalance> crateArkClientArkWalletBalance({required ArkWallet that}) {
     return handler.executeNormal(
       NormalTask(
         callFfi: (port_) {
@@ -285,12 +200,12 @@ class LibArkApiImpl extends LibArkApiImplPlatform implements LibArkApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 3,
+            funcId: 1,
             port: port_,
           );
         },
         codec: SseCodec(
-          decodeSuccessData: sse_decode_balance,
+          decodeSuccessData: sse_decode_ark_balance,
           decodeErrorData: sse_decode_AnyhowException,
         ),
         constMeta: kCrateArkClientArkWalletBalanceConstMeta,
@@ -313,7 +228,7 @@ class LibArkApiImpl extends LibArkApiImplPlatform implements LibArkApi {
             that,
             serializer,
           );
-          return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 4)!;
+          return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 2)!;
         },
         codec: SseCodec(
           decodeSuccessData: sse_decode_String,
@@ -347,7 +262,7 @@ class LibArkApiImpl extends LibArkApiImplPlatform implements LibArkApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 5,
+            funcId: 3,
             port: port_,
           );
         },
@@ -389,7 +304,7 @@ class LibArkApiImpl extends LibArkApiImplPlatform implements LibArkApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 6,
+            funcId: 4,
             port: port_,
           );
         },
@@ -425,7 +340,7 @@ class LibArkApiImpl extends LibArkApiImplPlatform implements LibArkApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 7,
+            funcId: 5,
             port: port_,
           );
         },
@@ -466,7 +381,7 @@ class LibArkApiImpl extends LibArkApiImplPlatform implements LibArkApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 8,
+            funcId: 6,
             port: port_,
           );
         },
@@ -498,7 +413,7 @@ class LibArkApiImpl extends LibArkApiImplPlatform implements LibArkApi {
             that,
             serializer,
           );
-          return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 9)!;
+          return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 7)!;
         },
         codec: SseCodec(
           decodeSuccessData: sse_decode_String,
@@ -527,7 +442,7 @@ class LibArkApiImpl extends LibArkApiImplPlatform implements LibArkApi {
             that,
             serializer,
           );
-          return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 10)!;
+          return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 8)!;
         },
         codec: SseCodec(
           decodeSuccessData: sse_decode_String,
@@ -565,7 +480,7 @@ class LibArkApiImpl extends LibArkApiImplPlatform implements LibArkApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 11,
+            funcId: 9,
             port: port_,
           );
         },
@@ -605,7 +520,7 @@ class LibArkApiImpl extends LibArkApiImplPlatform implements LibArkApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 12,
+            funcId: 10,
             port: port_,
           );
         },
@@ -636,7 +551,7 @@ class LibArkApiImpl extends LibArkApiImplPlatform implements LibArkApi {
             that,
             serializer,
           );
-          return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 13)!;
+          return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 11)!;
         },
         codec: SseCodec(
           decodeSuccessData: sse_decode_server_info,
@@ -672,7 +587,7 @@ class LibArkApiImpl extends LibArkApiImplPlatform implements LibArkApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 14,
+            funcId: 12,
             port: port_,
           );
         },
@@ -710,7 +625,7 @@ class LibArkApiImpl extends LibArkApiImplPlatform implements LibArkApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 15,
+            funcId: 13,
             port: port_,
           );
         },
@@ -733,7 +648,7 @@ class LibArkApiImpl extends LibArkApiImplPlatform implements LibArkApi {
       );
 
   @override
-  Future<List<Transaction>> crateArkClientArkWalletTransactionHistory({
+  Future<List<ArkTransaction>> crateArkClientArkWalletTransactionHistory({
     required ArkWallet that,
   }) {
     return handler.executeNormal(
@@ -747,12 +662,12 @@ class LibArkApiImpl extends LibArkApiImplPlatform implements LibArkApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 16,
+            funcId: 14,
             port: port_,
           );
         },
         codec: SseCodec(
-          decodeSuccessData: sse_decode_list_transaction,
+          decodeSuccessData: sse_decode_list_ark_transaction,
           decodeErrorData: sse_decode_AnyhowException,
         ),
         constMeta: kCrateArkClientArkWalletTransactionHistoryConstMeta,
@@ -783,7 +698,7 @@ class LibArkApiImpl extends LibArkApiImplPlatform implements LibArkApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 17,
+            funcId: 15,
             port: port_,
           );
         },
@@ -814,7 +729,7 @@ class LibArkApiImpl extends LibArkApiImplPlatform implements LibArkApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 18,
+            funcId: 16,
             port: port_,
           );
         },
@@ -842,7 +757,7 @@ class LibArkApiImpl extends LibArkApiImplPlatform implements LibArkApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 19,
+            funcId: 17,
             port: port_,
           );
         },
@@ -868,7 +783,7 @@ class LibArkApiImpl extends LibArkApiImplPlatform implements LibArkApi {
         callFfi: () {
           final serializer = SseSerializer(generalizedFrbRustBinding);
           sse_encode_String(address, serializer);
-          return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 20)!;
+          return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 18)!;
         },
         codec: SseCodec(
           decodeSuccessData: sse_decode_bool,
@@ -891,7 +806,7 @@ class LibArkApiImpl extends LibArkApiImplPlatform implements LibArkApi {
         callFfi: () {
           final serializer = SseSerializer(generalizedFrbRustBinding);
           sse_encode_String(address, serializer);
-          return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 21)!;
+          return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 19)!;
         },
         codec: SseCodec(
           decodeSuccessData: sse_decode_bool,
@@ -906,14 +821,6 @@ class LibArkApiImpl extends LibArkApiImplPlatform implements LibArkApi {
 
   TaskConstMeta get kCrateArkUtilsUtilsIsBtcConstMeta =>
       const TaskConstMeta(debugName: "utils_is_btc", argNames: ["address"]);
-
-  RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_ArcClientEsploraClientWalletInMemoryDbInMemorySwapStorage =>
-      wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcClientEsploraClientWalletInMemoryDbInMemorySwapStorage;
-
-  RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_ArcClientEsploraClientWalletInMemoryDbInMemorySwapStorage =>
-      wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcClientEsploraClientWalletInMemoryDbInMemorySwapStorage;
 
   RustArcIncrementStrongCountFnType
   get rust_arc_increment_strong_count_ArkWallet =>
@@ -946,17 +853,6 @@ class LibArkApiImpl extends LibArkApiImplPlatform implements LibArkApi {
   }
 
   @protected
-  ArcClientEsploraClientWalletInMemoryDbInMemorySwapStorage
-  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcClientEsploraClientWalletInMemoryDbInMemorySwapStorage(
-    dynamic raw,
-  ) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return ArcClientEsploraClientWalletInMemoryDbInMemorySwapStorageImpl.frbInternalDcoDecode(
-      raw as List<dynamic>,
-    );
-  }
-
-  @protected
   ArkWallet
   dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArkWallet(
     dynamic raw,
@@ -985,15 +881,6 @@ class LibArkApiImpl extends LibArkApiImplPlatform implements LibArkApi {
 
   @protected
   ArkWallet
-  dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArkWallet(
-    dynamic raw,
-  ) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return ArkWalletImpl.frbInternalDcoDecode(raw as List<dynamic>);
-  }
-
-  @protected
-  ArkWallet
   dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArkWallet(
     dynamic raw,
   ) {
@@ -1008,17 +895,6 @@ class LibArkApiImpl extends LibArkApiImplPlatform implements LibArkApi {
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return EsploraClientImpl.frbInternalDcoDecode(raw as List<dynamic>);
-  }
-
-  @protected
-  ArcClientEsploraClientWalletInMemoryDbInMemorySwapStorage
-  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcClientEsploraClientWalletInMemoryDbInMemorySwapStorage(
-    dynamic raw,
-  ) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return ArcClientEsploraClientWalletInMemoryDbInMemorySwapStorageImpl.frbInternalDcoDecode(
-      raw as List<dynamic>,
-    );
   }
 
   @protected
@@ -1055,32 +931,60 @@ class LibArkApiImpl extends LibArkApiImplPlatform implements LibArkApi {
   }
 
   @protected
-  Balance dco_decode_balance(dynamic raw) {
+  ArkBalance dco_decode_ark_balance(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     final arr = raw as List<dynamic>;
     if (arr.length != 6)
       throw Exception('unexpected arr length: expect 6 but see ${arr.length}');
-    return Balance(
+    return ArkBalance(
       preconfirmed: dco_decode_i_64(arr[0]),
       settled: dco_decode_i_64(arr[1]),
       available: dco_decode_i_64(arr[2]),
       recoverable: dco_decode_i_64(arr[3]),
       total: dco_decode_i_64(arr[4]),
-      boarding: dco_decode_boarding(arr[5]),
+      boarding: dco_decode_ark_boarding(arr[5]),
     );
   }
 
   @protected
-  Boarding dco_decode_boarding(dynamic raw) {
+  ArkBoarding dco_decode_ark_boarding(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     final arr = raw as List<dynamic>;
     if (arr.length != 3)
       throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
-    return Boarding(
+    return ArkBoarding(
       unconfirmed: dco_decode_i_64(arr[0]),
       confirmed: dco_decode_i_64(arr[1]),
       total: dco_decode_i_64(arr[2]),
     );
+  }
+
+  @protected
+  ArkTransaction dco_decode_ark_transaction(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    switch (raw[0]) {
+      case 0:
+        return ArkTransaction_Boarding(
+          txid: dco_decode_String(raw[1]),
+          sats: dco_decode_i_64(raw[2]),
+          confirmedAt: dco_decode_opt_box_autoadd_i_64(raw[3]),
+        );
+      case 1:
+        return ArkTransaction_Commitment(
+          txid: dco_decode_String(raw[1]),
+          sats: dco_decode_i_64(raw[2]),
+          createdAt: dco_decode_i_64(raw[3]),
+        );
+      case 2:
+        return ArkTransaction_Redeem(
+          txid: dco_decode_String(raw[1]),
+          sats: dco_decode_i_64(raw[2]),
+          isSettled: dco_decode_bool(raw[3]),
+          createdAt: dco_decode_i_64(raw[4]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
   }
 
   @protected
@@ -1122,6 +1026,12 @@ class LibArkApiImpl extends LibArkApiImplPlatform implements LibArkApi {
   }
 
   @protected
+  List<ArkTransaction> dco_decode_list_ark_transaction(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return (raw as List<dynamic>).map(dco_decode_ark_transaction).toList();
+  }
+
+  @protected
   List<int> dco_decode_list_prim_u_8_loose(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return raw as List<int>;
@@ -1131,12 +1041,6 @@ class LibArkApiImpl extends LibArkApiImplPlatform implements LibArkApi {
   Uint8List dco_decode_list_prim_u_8_strict(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return raw as Uint8List;
-  }
-
-  @protected
-  List<Transaction> dco_decode_list_transaction(dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>).map(dco_decode_transaction).toList();
   }
 
   @protected
@@ -1168,34 +1072,6 @@ class LibArkApiImpl extends LibArkApiImplPlatform implements LibArkApi {
       dust: dco_decode_i_64(arr[13]),
       digest: dco_decode_String(arr[14]),
     );
-  }
-
-  @protected
-  Transaction dco_decode_transaction(dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
-      case 0:
-        return Transaction_Boarding(
-          txid: dco_decode_String(raw[1]),
-          sats: dco_decode_i_64(raw[2]),
-          confirmedAt: dco_decode_opt_box_autoadd_i_64(raw[3]),
-        );
-      case 1:
-        return Transaction_Commitment(
-          txid: dco_decode_String(raw[1]),
-          sats: dco_decode_i_64(raw[2]),
-          createdAt: dco_decode_i_64(raw[3]),
-        );
-      case 2:
-        return Transaction_Redeem(
-          txid: dco_decode_String(raw[1]),
-          sats: dco_decode_i_64(raw[2]),
-          isSettled: dco_decode_bool(raw[3]),
-          createdAt: dco_decode_i_64(raw[4]),
-        );
-      default:
-        throw Exception("unreachable");
-    }
   }
 
   @protected
@@ -1239,18 +1115,6 @@ class LibArkApiImpl extends LibArkApiImplPlatform implements LibArkApi {
   }
 
   @protected
-  ArcClientEsploraClientWalletInMemoryDbInMemorySwapStorage
-  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcClientEsploraClientWalletInMemoryDbInMemorySwapStorage(
-    SseDeserializer deserializer,
-  ) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return ArcClientEsploraClientWalletInMemoryDbInMemorySwapStorageImpl.frbInternalSseDecode(
-      sse_decode_usize(deserializer),
-      sse_decode_i_32(deserializer),
-    );
-  }
-
-  @protected
   ArkWallet
   sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArkWallet(
     SseDeserializer deserializer,
@@ -1288,18 +1152,6 @@ class LibArkApiImpl extends LibArkApiImplPlatform implements LibArkApi {
 
   @protected
   ArkWallet
-  sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArkWallet(
-    SseDeserializer deserializer,
-  ) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return ArkWalletImpl.frbInternalSseDecode(
-      sse_decode_usize(deserializer),
-      sse_decode_i_32(deserializer),
-    );
-  }
-
-  @protected
-  ArkWallet
   sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArkWallet(
     SseDeserializer deserializer,
   ) {
@@ -1317,18 +1169,6 @@ class LibArkApiImpl extends LibArkApiImplPlatform implements LibArkApi {
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return EsploraClientImpl.frbInternalSseDecode(
-      sse_decode_usize(deserializer),
-      sse_decode_i_32(deserializer),
-    );
-  }
-
-  @protected
-  ArcClientEsploraClientWalletInMemoryDbInMemorySwapStorage
-  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcClientEsploraClientWalletInMemoryDbInMemorySwapStorage(
-    SseDeserializer deserializer,
-  ) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return ArcClientEsploraClientWalletInMemoryDbInMemorySwapStorageImpl.frbInternalSseDecode(
       sse_decode_usize(deserializer),
       sse_decode_i_32(deserializer),
     );
@@ -1378,15 +1218,15 @@ class LibArkApiImpl extends LibArkApiImplPlatform implements LibArkApi {
   }
 
   @protected
-  Balance sse_decode_balance(SseDeserializer deserializer) {
+  ArkBalance sse_decode_ark_balance(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var var_preconfirmed = sse_decode_i_64(deserializer);
     var var_settled = sse_decode_i_64(deserializer);
     var var_available = sse_decode_i_64(deserializer);
     var var_recoverable = sse_decode_i_64(deserializer);
     var var_total = sse_decode_i_64(deserializer);
-    var var_boarding = sse_decode_boarding(deserializer);
-    return Balance(
+    var var_boarding = sse_decode_ark_boarding(deserializer);
+    return ArkBalance(
       preconfirmed: var_preconfirmed,
       settled: var_settled,
       available: var_available,
@@ -1397,16 +1237,56 @@ class LibArkApiImpl extends LibArkApiImplPlatform implements LibArkApi {
   }
 
   @protected
-  Boarding sse_decode_boarding(SseDeserializer deserializer) {
+  ArkBoarding sse_decode_ark_boarding(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var var_unconfirmed = sse_decode_i_64(deserializer);
     var var_confirmed = sse_decode_i_64(deserializer);
     var var_total = sse_decode_i_64(deserializer);
-    return Boarding(
+    return ArkBoarding(
       unconfirmed: var_unconfirmed,
       confirmed: var_confirmed,
       total: var_total,
     );
+  }
+
+  @protected
+  ArkTransaction sse_decode_ark_transaction(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+
+    var tag_ = sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        var var_txid = sse_decode_String(deserializer);
+        var var_sats = sse_decode_i_64(deserializer);
+        var var_confirmedAt = sse_decode_opt_box_autoadd_i_64(deserializer);
+        return ArkTransaction_Boarding(
+          txid: var_txid,
+          sats: var_sats,
+          confirmedAt: var_confirmedAt,
+        );
+      case 1:
+        var var_txid = sse_decode_String(deserializer);
+        var var_sats = sse_decode_i_64(deserializer);
+        var var_createdAt = sse_decode_i_64(deserializer);
+        return ArkTransaction_Commitment(
+          txid: var_txid,
+          sats: var_sats,
+          createdAt: var_createdAt,
+        );
+      case 2:
+        var var_txid = sse_decode_String(deserializer);
+        var var_sats = sse_decode_i_64(deserializer);
+        var var_isSettled = sse_decode_bool(deserializer);
+        var var_createdAt = sse_decode_i_64(deserializer);
+        return ArkTransaction_Redeem(
+          txid: var_txid,
+          sats: var_sats,
+          isSettled: var_isSettled,
+          createdAt: var_createdAt,
+        );
+      default:
+        throw UnimplementedError('');
+    }
   }
 
   @protected
@@ -1451,6 +1331,20 @@ class LibArkApiImpl extends LibArkApiImplPlatform implements LibArkApi {
   }
 
   @protected
+  List<ArkTransaction> sse_decode_list_ark_transaction(
+    SseDeserializer deserializer,
+  ) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <ArkTransaction>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_ark_transaction(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
   List<int> sse_decode_list_prim_u_8_loose(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var len_ = sse_decode_i_32(deserializer);
@@ -1462,18 +1356,6 @@ class LibArkApiImpl extends LibArkApiImplPlatform implements LibArkApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var len_ = sse_decode_i_32(deserializer);
     return deserializer.buffer.getUint8List(len_);
-  }
-
-  @protected
-  List<Transaction> sse_decode_list_transaction(SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-
-    var len_ = sse_decode_i_32(deserializer);
-    var ans_ = <Transaction>[];
-    for (var idx_ = 0; idx_ < len_; ++idx_) {
-      ans_.add(sse_decode_transaction(deserializer));
-    }
-    return ans_;
   }
 
   @protected
@@ -1525,46 +1407,6 @@ class LibArkApiImpl extends LibArkApiImplPlatform implements LibArkApi {
   }
 
   @protected
-  Transaction sse_decode_transaction(SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-
-    var tag_ = sse_decode_i_32(deserializer);
-    switch (tag_) {
-      case 0:
-        var var_txid = sse_decode_String(deserializer);
-        var var_sats = sse_decode_i_64(deserializer);
-        var var_confirmedAt = sse_decode_opt_box_autoadd_i_64(deserializer);
-        return Transaction_Boarding(
-          txid: var_txid,
-          sats: var_sats,
-          confirmedAt: var_confirmedAt,
-        );
-      case 1:
-        var var_txid = sse_decode_String(deserializer);
-        var var_sats = sse_decode_i_64(deserializer);
-        var var_createdAt = sse_decode_i_64(deserializer);
-        return Transaction_Commitment(
-          txid: var_txid,
-          sats: var_sats,
-          createdAt: var_createdAt,
-        );
-      case 2:
-        var var_txid = sse_decode_String(deserializer);
-        var var_sats = sse_decode_i_64(deserializer);
-        var var_isSettled = sse_decode_bool(deserializer);
-        var var_createdAt = sse_decode_i_64(deserializer);
-        return Transaction_Redeem(
-          txid: var_txid,
-          sats: var_sats,
-          isSettled: var_isSettled,
-          createdAt: var_createdAt,
-        );
-      default:
-        throw UnimplementedError('');
-    }
-  }
-
-  @protected
   int sse_decode_u_32(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return deserializer.buffer.getUint32();
@@ -1600,20 +1442,6 @@ class LibArkApiImpl extends LibArkApiImplPlatform implements LibArkApi {
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_String(self.message, serializer);
-  }
-
-  @protected
-  void
-  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcClientEsploraClientWalletInMemoryDbInMemorySwapStorage(
-    ArcClientEsploraClientWalletInMemoryDbInMemorySwapStorage self,
-    SseSerializer serializer,
-  ) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(
-      (self as ArcClientEsploraClientWalletInMemoryDbInMemorySwapStorageImpl)
-          .frbInternalSseEncode(move: true),
-      serializer,
-    );
   }
 
   @protected
@@ -1657,19 +1485,6 @@ class LibArkApiImpl extends LibArkApiImplPlatform implements LibArkApi {
 
   @protected
   void
-  sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArkWallet(
-    ArkWallet self,
-    SseSerializer serializer,
-  ) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(
-      (self as ArkWalletImpl).frbInternalSseEncode(move: false),
-      serializer,
-    );
-  }
-
-  @protected
-  void
   sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArkWallet(
     ArkWallet self,
     SseSerializer serializer,
@@ -1690,20 +1505,6 @@ class LibArkApiImpl extends LibArkApiImplPlatform implements LibArkApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
       (self as EsploraClientImpl).frbInternalSseEncode(move: false),
-      serializer,
-    );
-  }
-
-  @protected
-  void
-  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerArcClientEsploraClientWalletInMemoryDbInMemorySwapStorage(
-    ArcClientEsploraClientWalletInMemoryDbInMemorySwapStorage self,
-    SseSerializer serializer,
-  ) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(
-      (self as ArcClientEsploraClientWalletInMemoryDbInMemorySwapStorageImpl)
-          .frbInternalSseEncode(move: null),
       serializer,
     );
   }
@@ -1754,22 +1555,61 @@ class LibArkApiImpl extends LibArkApiImplPlatform implements LibArkApi {
   }
 
   @protected
-  void sse_encode_balance(Balance self, SseSerializer serializer) {
+  void sse_encode_ark_balance(ArkBalance self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_i_64(self.preconfirmed, serializer);
     sse_encode_i_64(self.settled, serializer);
     sse_encode_i_64(self.available, serializer);
     sse_encode_i_64(self.recoverable, serializer);
     sse_encode_i_64(self.total, serializer);
-    sse_encode_boarding(self.boarding, serializer);
+    sse_encode_ark_boarding(self.boarding, serializer);
   }
 
   @protected
-  void sse_encode_boarding(Boarding self, SseSerializer serializer) {
+  void sse_encode_ark_boarding(ArkBoarding self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_i_64(self.unconfirmed, serializer);
     sse_encode_i_64(self.confirmed, serializer);
     sse_encode_i_64(self.total, serializer);
+  }
+
+  @protected
+  void sse_encode_ark_transaction(
+    ArkTransaction self,
+    SseSerializer serializer,
+  ) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    switch (self) {
+      case ArkTransaction_Boarding(
+        txid: final txid,
+        sats: final sats,
+        confirmedAt: final confirmedAt,
+      ):
+        sse_encode_i_32(0, serializer);
+        sse_encode_String(txid, serializer);
+        sse_encode_i_64(sats, serializer);
+        sse_encode_opt_box_autoadd_i_64(confirmedAt, serializer);
+      case ArkTransaction_Commitment(
+        txid: final txid,
+        sats: final sats,
+        createdAt: final createdAt,
+      ):
+        sse_encode_i_32(1, serializer);
+        sse_encode_String(txid, serializer);
+        sse_encode_i_64(sats, serializer);
+        sse_encode_i_64(createdAt, serializer);
+      case ArkTransaction_Redeem(
+        txid: final txid,
+        sats: final sats,
+        isSettled: final isSettled,
+        createdAt: final createdAt,
+      ):
+        sse_encode_i_32(2, serializer);
+        sse_encode_String(txid, serializer);
+        sse_encode_i_64(sats, serializer);
+        sse_encode_bool(isSettled, serializer);
+        sse_encode_i_64(createdAt, serializer);
+    }
   }
 
   @protected
@@ -1812,6 +1652,18 @@ class LibArkApiImpl extends LibArkApiImplPlatform implements LibArkApi {
   }
 
   @protected
+  void sse_encode_list_ark_transaction(
+    List<ArkTransaction> self,
+    SseSerializer serializer,
+  ) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_ark_transaction(item, serializer);
+    }
+  }
+
+  @protected
   void sse_encode_list_prim_u_8_loose(
     List<int> self,
     SseSerializer serializer,
@@ -1831,18 +1683,6 @@ class LibArkApiImpl extends LibArkApiImplPlatform implements LibArkApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_i_32(self.length, serializer);
     serializer.buffer.putUint8List(self);
-  }
-
-  @protected
-  void sse_encode_list_transaction(
-    List<Transaction> self,
-    SseSerializer serializer,
-  ) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_i_32(self.length, serializer);
-    for (final item in self) {
-      sse_encode_transaction(item, serializer);
-    }
   }
 
   @protected
@@ -1879,42 +1719,6 @@ class LibArkApiImpl extends LibArkApiImplPlatform implements LibArkApi {
   }
 
   @protected
-  void sse_encode_transaction(Transaction self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    switch (self) {
-      case Transaction_Boarding(
-        txid: final txid,
-        sats: final sats,
-        confirmedAt: final confirmedAt,
-      ):
-        sse_encode_i_32(0, serializer);
-        sse_encode_String(txid, serializer);
-        sse_encode_i_64(sats, serializer);
-        sse_encode_opt_box_autoadd_i_64(confirmedAt, serializer);
-      case Transaction_Commitment(
-        txid: final txid,
-        sats: final sats,
-        createdAt: final createdAt,
-      ):
-        sse_encode_i_32(1, serializer);
-        sse_encode_String(txid, serializer);
-        sse_encode_i_64(sats, serializer);
-        sse_encode_i_64(createdAt, serializer);
-      case Transaction_Redeem(
-        txid: final txid,
-        sats: final sats,
-        isSettled: final isSettled,
-        createdAt: final createdAt,
-      ):
-        sse_encode_i_32(2, serializer);
-        sse_encode_String(txid, serializer);
-        sse_encode_i_64(sats, serializer);
-        sse_encode_bool(isSettled, serializer);
-        sse_encode_i_64(createdAt, serializer);
-    }
-  }
-
-  @protected
   void sse_encode_u_32(int self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     serializer.buffer.putUint32(self);
@@ -1944,40 +1748,6 @@ class LibArkApiImpl extends LibArkApiImplPlatform implements LibArkApi {
 }
 
 @sealed
-class ArcClientEsploraClientWalletInMemoryDbInMemorySwapStorageImpl
-    extends RustOpaque
-    implements ArcClientEsploraClientWalletInMemoryDbInMemorySwapStorage {
-  // Not to be used by end users
-  ArcClientEsploraClientWalletInMemoryDbInMemorySwapStorageImpl.frbInternalDcoDecode(
-    List<dynamic> wire,
-  ) : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  ArcClientEsploraClientWalletInMemoryDbInMemorySwapStorageImpl.frbInternalSseDecode(
-    BigInt ptr,
-    int externalSizeOnNative,
-  ) : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount:
-        LibArk
-            .instance
-            .api
-            .rust_arc_increment_strong_count_ArcClientEsploraClientWalletInMemoryDbInMemorySwapStorage,
-    rustArcDecrementStrongCount:
-        LibArk
-            .instance
-            .api
-            .rust_arc_decrement_strong_count_ArcClientEsploraClientWalletInMemoryDbInMemorySwapStorage,
-    rustArcDecrementStrongCountPtr:
-        LibArk
-            .instance
-            .api
-            .rust_arc_decrement_strong_count_ArcClientEsploraClientWalletInMemoryDbInMemorySwapStoragePtr,
-  );
-}
-
-@sealed
 class ArkWalletImpl extends RustOpaque implements ArkWallet {
   // Not to be used by end users
   ArkWalletImpl.frbInternalDcoDecode(List<dynamic> wire)
@@ -1996,18 +1766,7 @@ class ArkWalletImpl extends RustOpaque implements ArkWallet {
         LibArk.instance.api.rust_arc_decrement_strong_count_ArkWalletPtr,
   );
 
-  ArcClientEsploraClientWalletInMemoryDbInMemorySwapStorage get inner => LibArk
-      .instance
-      .api
-      .crateArkClientArkWalletAutoAccessorGetInner(that: this);
-
-  set inner(ArcClientEsploraClientWalletInMemoryDbInMemorySwapStorage inner) =>
-      LibArk.instance.api.crateArkClientArkWalletAutoAccessorSetInner(
-        that: this,
-        inner: inner,
-      );
-
-  Future<Balance> balance() =>
+  Future<ArkBalance> balance() =>
       LibArk.instance.api.crateArkClientArkWalletBalance(that: this);
 
   String boardingAddress() =>
@@ -2070,7 +1829,7 @@ class ArkWalletImpl extends RustOpaque implements ArkWallet {
     selectRecoverableVtxos: selectRecoverableVtxos,
   );
 
-  Future<List<Transaction>> transactionHistory() =>
+  Future<List<ArkTransaction>> transactionHistory() =>
       LibArk.instance.api.crateArkClientArkWalletTransactionHistory(that: this);
 }
 
