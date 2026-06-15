@@ -12,20 +12,20 @@ part of 'transactions.dart';
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
-mixin _$Transaction {
+mixin _$ArkTransaction {
 
  String get txid; PlatformInt64 get sats;
-/// Create a copy of Transaction
+/// Create a copy of ArkTransaction
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$TransactionCopyWith<Transaction> get copyWith => _$TransactionCopyWithImpl<Transaction>(this as Transaction, _$identity);
+$ArkTransactionCopyWith<ArkTransaction> get copyWith => _$ArkTransactionCopyWithImpl<ArkTransaction>(this as ArkTransaction, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Transaction&&(identical(other.txid, txid) || other.txid == txid)&&(identical(other.sats, sats) || other.sats == sats));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ArkTransaction&&(identical(other.txid, txid) || other.txid == txid)&&(identical(other.sats, sats) || other.sats == sats));
 }
 
 
@@ -34,15 +34,15 @@ int get hashCode => Object.hash(runtimeType,txid,sats);
 
 @override
 String toString() {
-  return 'Transaction(txid: $txid, sats: $sats)';
+  return 'ArkTransaction(txid: $txid, sats: $sats)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $TransactionCopyWith<$Res>  {
-  factory $TransactionCopyWith(Transaction value, $Res Function(Transaction) _then) = _$TransactionCopyWithImpl;
+abstract mixin class $ArkTransactionCopyWith<$Res>  {
+  factory $ArkTransactionCopyWith(ArkTransaction value, $Res Function(ArkTransaction) _then) = _$ArkTransactionCopyWithImpl;
 @useResult
 $Res call({
  String txid, int sats
@@ -53,14 +53,14 @@ $Res call({
 
 }
 /// @nodoc
-class _$TransactionCopyWithImpl<$Res>
-    implements $TransactionCopyWith<$Res> {
-  _$TransactionCopyWithImpl(this._self, this._then);
+class _$ArkTransactionCopyWithImpl<$Res>
+    implements $ArkTransactionCopyWith<$Res> {
+  _$ArkTransactionCopyWithImpl(this._self, this._then);
 
-  final Transaction _self;
-  final $Res Function(Transaction) _then;
+  final ArkTransaction _self;
+  final $Res Function(ArkTransaction) _then;
 
-/// Create a copy of Transaction
+/// Create a copy of ArkTransaction
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? txid = null,Object? sats = null,}) {
   return _then(_self.copyWith(
@@ -73,8 +73,8 @@ as int,
 }
 
 
-/// Adds pattern-matching-related methods to [Transaction].
-extension TransactionPatterns on Transaction {
+/// Adds pattern-matching-related methods to [ArkTransaction].
+extension ArkTransactionPatterns on ArkTransaction {
 /// A variant of `map` that fallback to returning `orElse`.
 ///
 /// It is equivalent to doing:
@@ -87,12 +87,12 @@ extension TransactionPatterns on Transaction {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( Transaction_Boarding value)?  boarding,TResult Function( Transaction_Commitment value)?  commitment,TResult Function( Transaction_Redeem value)?  redeem,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( ArkTransaction_Boarding value)?  boarding,TResult Function( ArkTransaction_Commitment value)?  commitment,TResult Function( ArkTransaction_Redeem value)?  redeem,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case Transaction_Boarding() when boarding != null:
-return boarding(_that);case Transaction_Commitment() when commitment != null:
-return commitment(_that);case Transaction_Redeem() when redeem != null:
+case ArkTransaction_Boarding() when boarding != null:
+return boarding(_that);case ArkTransaction_Commitment() when commitment != null:
+return commitment(_that);case ArkTransaction_Redeem() when redeem != null:
 return redeem(_that);case _:
   return orElse();
 
@@ -111,12 +111,12 @@ return redeem(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( Transaction_Boarding value)  boarding,required TResult Function( Transaction_Commitment value)  commitment,required TResult Function( Transaction_Redeem value)  redeem,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( ArkTransaction_Boarding value)  boarding,required TResult Function( ArkTransaction_Commitment value)  commitment,required TResult Function( ArkTransaction_Redeem value)  redeem,}){
 final _that = this;
 switch (_that) {
-case Transaction_Boarding():
-return boarding(_that);case Transaction_Commitment():
-return commitment(_that);case Transaction_Redeem():
+case ArkTransaction_Boarding():
+return boarding(_that);case ArkTransaction_Commitment():
+return commitment(_that);case ArkTransaction_Redeem():
 return redeem(_that);}
 }
 /// A variant of `map` that fallback to returning `null`.
@@ -131,12 +131,12 @@ return redeem(_that);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( Transaction_Boarding value)?  boarding,TResult? Function( Transaction_Commitment value)?  commitment,TResult? Function( Transaction_Redeem value)?  redeem,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( ArkTransaction_Boarding value)?  boarding,TResult? Function( ArkTransaction_Commitment value)?  commitment,TResult? Function( ArkTransaction_Redeem value)?  redeem,}){
 final _that = this;
 switch (_that) {
-case Transaction_Boarding() when boarding != null:
-return boarding(_that);case Transaction_Commitment() when commitment != null:
-return commitment(_that);case Transaction_Redeem() when redeem != null:
+case ArkTransaction_Boarding() when boarding != null:
+return boarding(_that);case ArkTransaction_Commitment() when commitment != null:
+return commitment(_that);case ArkTransaction_Redeem() when redeem != null:
 return redeem(_that);case _:
   return null;
 
@@ -156,9 +156,9 @@ return redeem(_that);case _:
 
 @optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String txid,  PlatformInt64 sats,  PlatformInt64? confirmedAt)?  boarding,TResult Function( String txid,  PlatformInt64 sats,  PlatformInt64 createdAt)?  commitment,TResult Function( String txid,  PlatformInt64 sats,  bool isSettled,  PlatformInt64 createdAt)?  redeem,required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case Transaction_Boarding() when boarding != null:
-return boarding(_that.txid,_that.sats,_that.confirmedAt);case Transaction_Commitment() when commitment != null:
-return commitment(_that.txid,_that.sats,_that.createdAt);case Transaction_Redeem() when redeem != null:
+case ArkTransaction_Boarding() when boarding != null:
+return boarding(_that.txid,_that.sats,_that.confirmedAt);case ArkTransaction_Commitment() when commitment != null:
+return commitment(_that.txid,_that.sats,_that.createdAt);case ArkTransaction_Redeem() when redeem != null:
 return redeem(_that.txid,_that.sats,_that.isSettled,_that.createdAt);case _:
   return orElse();
 
@@ -179,9 +179,9 @@ return redeem(_that.txid,_that.sats,_that.isSettled,_that.createdAt);case _:
 
 @optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String txid,  PlatformInt64 sats,  PlatformInt64? confirmedAt)  boarding,required TResult Function( String txid,  PlatformInt64 sats,  PlatformInt64 createdAt)  commitment,required TResult Function( String txid,  PlatformInt64 sats,  bool isSettled,  PlatformInt64 createdAt)  redeem,}) {final _that = this;
 switch (_that) {
-case Transaction_Boarding():
-return boarding(_that.txid,_that.sats,_that.confirmedAt);case Transaction_Commitment():
-return commitment(_that.txid,_that.sats,_that.createdAt);case Transaction_Redeem():
+case ArkTransaction_Boarding():
+return boarding(_that.txid,_that.sats,_that.confirmedAt);case ArkTransaction_Commitment():
+return commitment(_that.txid,_that.sats,_that.createdAt);case ArkTransaction_Redeem():
 return redeem(_that.txid,_that.sats,_that.isSettled,_that.createdAt);}
 }
 /// A variant of `when` that fallback to returning `null`
@@ -198,9 +198,9 @@ return redeem(_that.txid,_that.sats,_that.isSettled,_that.createdAt);}
 
 @optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String txid,  PlatformInt64 sats,  PlatformInt64? confirmedAt)?  boarding,TResult? Function( String txid,  PlatformInt64 sats,  PlatformInt64 createdAt)?  commitment,TResult? Function( String txid,  PlatformInt64 sats,  bool isSettled,  PlatformInt64 createdAt)?  redeem,}) {final _that = this;
 switch (_that) {
-case Transaction_Boarding() when boarding != null:
-return boarding(_that.txid,_that.sats,_that.confirmedAt);case Transaction_Commitment() when commitment != null:
-return commitment(_that.txid,_that.sats,_that.createdAt);case Transaction_Redeem() when redeem != null:
+case ArkTransaction_Boarding() when boarding != null:
+return boarding(_that.txid,_that.sats,_that.confirmedAt);case ArkTransaction_Commitment() when commitment != null:
+return commitment(_that.txid,_that.sats,_that.createdAt);case ArkTransaction_Redeem() when redeem != null:
 return redeem(_that.txid,_that.sats,_that.isSettled,_that.createdAt);case _:
   return null;
 
@@ -212,25 +212,25 @@ return redeem(_that.txid,_that.sats,_that.isSettled,_that.createdAt);case _:
 /// @nodoc
 
 
-class Transaction_Boarding extends Transaction {
-  const Transaction_Boarding({required this.txid, required this.sats, this.confirmedAt}): super._();
+class ArkTransaction_Boarding extends ArkTransaction {
+  const ArkTransaction_Boarding({required this.txid, required this.sats, this.confirmedAt}): super._();
   
 
 @override final  String txid;
 @override final  PlatformInt64 sats;
  final  PlatformInt64? confirmedAt;
 
-/// Create a copy of Transaction
+/// Create a copy of ArkTransaction
 /// with the given fields replaced by the non-null parameter values.
 @override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$Transaction_BoardingCopyWith<Transaction_Boarding> get copyWith => _$Transaction_BoardingCopyWithImpl<Transaction_Boarding>(this, _$identity);
+$ArkTransaction_BoardingCopyWith<ArkTransaction_Boarding> get copyWith => _$ArkTransaction_BoardingCopyWithImpl<ArkTransaction_Boarding>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Transaction_Boarding&&(identical(other.txid, txid) || other.txid == txid)&&(identical(other.sats, sats) || other.sats == sats)&&(identical(other.confirmedAt, confirmedAt) || other.confirmedAt == confirmedAt));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ArkTransaction_Boarding&&(identical(other.txid, txid) || other.txid == txid)&&(identical(other.sats, sats) || other.sats == sats)&&(identical(other.confirmedAt, confirmedAt) || other.confirmedAt == confirmedAt));
 }
 
 
@@ -239,15 +239,15 @@ int get hashCode => Object.hash(runtimeType,txid,sats,confirmedAt);
 
 @override
 String toString() {
-  return 'Transaction.boarding(txid: $txid, sats: $sats, confirmedAt: $confirmedAt)';
+  return 'ArkTransaction.boarding(txid: $txid, sats: $sats, confirmedAt: $confirmedAt)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $Transaction_BoardingCopyWith<$Res> implements $TransactionCopyWith<$Res> {
-  factory $Transaction_BoardingCopyWith(Transaction_Boarding value, $Res Function(Transaction_Boarding) _then) = _$Transaction_BoardingCopyWithImpl;
+abstract mixin class $ArkTransaction_BoardingCopyWith<$Res> implements $ArkTransactionCopyWith<$Res> {
+  factory $ArkTransaction_BoardingCopyWith(ArkTransaction_Boarding value, $Res Function(ArkTransaction_Boarding) _then) = _$ArkTransaction_BoardingCopyWithImpl;
 @override @useResult
 $Res call({
  String txid, PlatformInt64 sats, PlatformInt64? confirmedAt
@@ -258,17 +258,17 @@ $Res call({
 
 }
 /// @nodoc
-class _$Transaction_BoardingCopyWithImpl<$Res>
-    implements $Transaction_BoardingCopyWith<$Res> {
-  _$Transaction_BoardingCopyWithImpl(this._self, this._then);
+class _$ArkTransaction_BoardingCopyWithImpl<$Res>
+    implements $ArkTransaction_BoardingCopyWith<$Res> {
+  _$ArkTransaction_BoardingCopyWithImpl(this._self, this._then);
 
-  final Transaction_Boarding _self;
-  final $Res Function(Transaction_Boarding) _then;
+  final ArkTransaction_Boarding _self;
+  final $Res Function(ArkTransaction_Boarding) _then;
 
-/// Create a copy of Transaction
+/// Create a copy of ArkTransaction
 /// with the given fields replaced by the non-null parameter values.
 @override @pragma('vm:prefer-inline') $Res call({Object? txid = null,Object? sats = null,Object? confirmedAt = freezed,}) {
-  return _then(Transaction_Boarding(
+  return _then(ArkTransaction_Boarding(
 txid: null == txid ? _self.txid : txid // ignore: cast_nullable_to_non_nullable
 as String,sats: null == sats ? _self.sats : sats // ignore: cast_nullable_to_non_nullable
 as PlatformInt64,confirmedAt: freezed == confirmedAt ? _self.confirmedAt : confirmedAt // ignore: cast_nullable_to_non_nullable
@@ -282,25 +282,25 @@ as PlatformInt64?,
 /// @nodoc
 
 
-class Transaction_Commitment extends Transaction {
-  const Transaction_Commitment({required this.txid, required this.sats, required this.createdAt}): super._();
+class ArkTransaction_Commitment extends ArkTransaction {
+  const ArkTransaction_Commitment({required this.txid, required this.sats, required this.createdAt}): super._();
   
 
 @override final  String txid;
 @override final  PlatformInt64 sats;
  final  PlatformInt64 createdAt;
 
-/// Create a copy of Transaction
+/// Create a copy of ArkTransaction
 /// with the given fields replaced by the non-null parameter values.
 @override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$Transaction_CommitmentCopyWith<Transaction_Commitment> get copyWith => _$Transaction_CommitmentCopyWithImpl<Transaction_Commitment>(this, _$identity);
+$ArkTransaction_CommitmentCopyWith<ArkTransaction_Commitment> get copyWith => _$ArkTransaction_CommitmentCopyWithImpl<ArkTransaction_Commitment>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Transaction_Commitment&&(identical(other.txid, txid) || other.txid == txid)&&(identical(other.sats, sats) || other.sats == sats)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ArkTransaction_Commitment&&(identical(other.txid, txid) || other.txid == txid)&&(identical(other.sats, sats) || other.sats == sats)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt));
 }
 
 
@@ -309,15 +309,15 @@ int get hashCode => Object.hash(runtimeType,txid,sats,createdAt);
 
 @override
 String toString() {
-  return 'Transaction.commitment(txid: $txid, sats: $sats, createdAt: $createdAt)';
+  return 'ArkTransaction.commitment(txid: $txid, sats: $sats, createdAt: $createdAt)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $Transaction_CommitmentCopyWith<$Res> implements $TransactionCopyWith<$Res> {
-  factory $Transaction_CommitmentCopyWith(Transaction_Commitment value, $Res Function(Transaction_Commitment) _then) = _$Transaction_CommitmentCopyWithImpl;
+abstract mixin class $ArkTransaction_CommitmentCopyWith<$Res> implements $ArkTransactionCopyWith<$Res> {
+  factory $ArkTransaction_CommitmentCopyWith(ArkTransaction_Commitment value, $Res Function(ArkTransaction_Commitment) _then) = _$ArkTransaction_CommitmentCopyWithImpl;
 @override @useResult
 $Res call({
  String txid, PlatformInt64 sats, PlatformInt64 createdAt
@@ -328,17 +328,17 @@ $Res call({
 
 }
 /// @nodoc
-class _$Transaction_CommitmentCopyWithImpl<$Res>
-    implements $Transaction_CommitmentCopyWith<$Res> {
-  _$Transaction_CommitmentCopyWithImpl(this._self, this._then);
+class _$ArkTransaction_CommitmentCopyWithImpl<$Res>
+    implements $ArkTransaction_CommitmentCopyWith<$Res> {
+  _$ArkTransaction_CommitmentCopyWithImpl(this._self, this._then);
 
-  final Transaction_Commitment _self;
-  final $Res Function(Transaction_Commitment) _then;
+  final ArkTransaction_Commitment _self;
+  final $Res Function(ArkTransaction_Commitment) _then;
 
-/// Create a copy of Transaction
+/// Create a copy of ArkTransaction
 /// with the given fields replaced by the non-null parameter values.
 @override @pragma('vm:prefer-inline') $Res call({Object? txid = null,Object? sats = null,Object? createdAt = null,}) {
-  return _then(Transaction_Commitment(
+  return _then(ArkTransaction_Commitment(
 txid: null == txid ? _self.txid : txid // ignore: cast_nullable_to_non_nullable
 as String,sats: null == sats ? _self.sats : sats // ignore: cast_nullable_to_non_nullable
 as PlatformInt64,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
@@ -352,8 +352,8 @@ as PlatformInt64,
 /// @nodoc
 
 
-class Transaction_Redeem extends Transaction {
-  const Transaction_Redeem({required this.txid, required this.sats, required this.isSettled, required this.createdAt}): super._();
+class ArkTransaction_Redeem extends ArkTransaction {
+  const ArkTransaction_Redeem({required this.txid, required this.sats, required this.isSettled, required this.createdAt}): super._();
   
 
 @override final  String txid;
@@ -361,17 +361,17 @@ class Transaction_Redeem extends Transaction {
  final  bool isSettled;
  final  PlatformInt64 createdAt;
 
-/// Create a copy of Transaction
+/// Create a copy of ArkTransaction
 /// with the given fields replaced by the non-null parameter values.
 @override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$Transaction_RedeemCopyWith<Transaction_Redeem> get copyWith => _$Transaction_RedeemCopyWithImpl<Transaction_Redeem>(this, _$identity);
+$ArkTransaction_RedeemCopyWith<ArkTransaction_Redeem> get copyWith => _$ArkTransaction_RedeemCopyWithImpl<ArkTransaction_Redeem>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Transaction_Redeem&&(identical(other.txid, txid) || other.txid == txid)&&(identical(other.sats, sats) || other.sats == sats)&&(identical(other.isSettled, isSettled) || other.isSettled == isSettled)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ArkTransaction_Redeem&&(identical(other.txid, txid) || other.txid == txid)&&(identical(other.sats, sats) || other.sats == sats)&&(identical(other.isSettled, isSettled) || other.isSettled == isSettled)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt));
 }
 
 
@@ -380,15 +380,15 @@ int get hashCode => Object.hash(runtimeType,txid,sats,isSettled,createdAt);
 
 @override
 String toString() {
-  return 'Transaction.redeem(txid: $txid, sats: $sats, isSettled: $isSettled, createdAt: $createdAt)';
+  return 'ArkTransaction.redeem(txid: $txid, sats: $sats, isSettled: $isSettled, createdAt: $createdAt)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $Transaction_RedeemCopyWith<$Res> implements $TransactionCopyWith<$Res> {
-  factory $Transaction_RedeemCopyWith(Transaction_Redeem value, $Res Function(Transaction_Redeem) _then) = _$Transaction_RedeemCopyWithImpl;
+abstract mixin class $ArkTransaction_RedeemCopyWith<$Res> implements $ArkTransactionCopyWith<$Res> {
+  factory $ArkTransaction_RedeemCopyWith(ArkTransaction_Redeem value, $Res Function(ArkTransaction_Redeem) _then) = _$ArkTransaction_RedeemCopyWithImpl;
 @override @useResult
 $Res call({
  String txid, PlatformInt64 sats, bool isSettled, PlatformInt64 createdAt
@@ -399,17 +399,17 @@ $Res call({
 
 }
 /// @nodoc
-class _$Transaction_RedeemCopyWithImpl<$Res>
-    implements $Transaction_RedeemCopyWith<$Res> {
-  _$Transaction_RedeemCopyWithImpl(this._self, this._then);
+class _$ArkTransaction_RedeemCopyWithImpl<$Res>
+    implements $ArkTransaction_RedeemCopyWith<$Res> {
+  _$ArkTransaction_RedeemCopyWithImpl(this._self, this._then);
 
-  final Transaction_Redeem _self;
-  final $Res Function(Transaction_Redeem) _then;
+  final ArkTransaction_Redeem _self;
+  final $Res Function(ArkTransaction_Redeem) _then;
 
-/// Create a copy of Transaction
+/// Create a copy of ArkTransaction
 /// with the given fields replaced by the non-null parameter values.
 @override @pragma('vm:prefer-inline') $Res call({Object? txid = null,Object? sats = null,Object? isSettled = null,Object? createdAt = null,}) {
-  return _then(Transaction_Redeem(
+  return _then(ArkTransaction_Redeem(
 txid: null == txid ? _self.txid : txid // ignore: cast_nullable_to_non_nullable
 as String,sats: null == sats ? _self.sats : sats // ignore: cast_nullable_to_non_nullable
 as PlatformInt64,isSettled: null == isSettled ? _self.isSettled : isSettled // ignore: cast_nullable_to_non_nullable

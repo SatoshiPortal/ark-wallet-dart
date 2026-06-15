@@ -8,12 +8,12 @@ use std::str::FromStr;
 use std::sync::Arc;
 use std::time::Duration;
 // Re-export types that flutter_rust_bridge needs
-pub use ark_bdk_wallet::Wallet;
-pub use ark_client::{Client, InMemorySwapStorage, OfflineClient};
+pub(crate) use ark_bdk_wallet::Wallet;
+pub(crate) use ark_client::{Client, InMemorySwapStorage, OfflineClient};
 
 #[derive(Clone)]
 pub struct ArkWallet {
-    pub inner: Arc<Client<EsploraClient, Wallet<InMemoryDb>, InMemorySwapStorage>>,
+    pub(crate) inner: Arc<Client<EsploraClient, Wallet<InMemoryDb>, InMemorySwapStorage>>,
 }
 
 impl ArkWallet {

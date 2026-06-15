@@ -1,7 +1,7 @@
 use crate::ark::client::ArkWallet;
 use anyhow::{anyhow, Result};
 
-pub enum Transaction {
+pub enum ArkTransaction {
     Boarding {
         txid: String,
         sats: i64,
@@ -21,7 +21,7 @@ pub enum Transaction {
 }
 
 impl ArkWallet {
-    pub async fn transaction_history(&self) -> Result<Vec<Transaction>> {
+    pub async fn transaction_history(&self) -> Result<Vec<ArkTransaction>> {
         let mut txs = self
             .inner
             .transaction_history()
@@ -38,7 +38,7 @@ impl ArkWallet {
                     txid,
                     amount,
                     confirmed_at,
-                } => Transaction::Boarding {
+                } => ArkTransaction::Boarding {
                     txid: txid.to_string(),
                     sats: amount.to_sat() as i64,
                     confirmed_at: confirmed_at,
@@ -47,7 +47,7 @@ impl ArkWallet {
                     txid,
                     amount,
                     created_at,
-                } => Transaction::Commitment {
+                } => ArkTransaction::Commitment {
                     txid: txid.to_string(),
                     sats: amount.to_sat(),
                     created_at,
@@ -57,7 +57,7 @@ impl ArkWallet {
                     amount,
                     is_settled,
                     created_at,
-                } => Transaction::Redeem {
+                } => ArkTransaction::Redeem {
                     txid: txid.to_string(),
                     sats: amount.to_sat(),
                     is_settled,
